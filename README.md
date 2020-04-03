@@ -1,1 +1,3 @@
 # TravelMonkey
+
+![](assets/TravelMonkey.png)
