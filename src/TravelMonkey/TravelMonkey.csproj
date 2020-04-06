@@ -13,19 +13,27 @@
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="4.5.0.530" />
     <PackageReference Include="Xamarin.Essentials" Version="1.5.2" />
+    <PackageReference Include="Xamarin.Forms.PancakeView" Version="1.3.7" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
     <Folder Include="Resources\Fonts\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="Models\" />
+    <Folder Include="Effects\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Resources\Fonts\Lato-Black.ttf" />
     <None Remove="Resources\Fonts\Lato-Bold.ttf" />
     <None Remove="Resources\Fonts\Lato-Regular.ttf" />
+    <None Remove="Resources\Fonts\fa-regular.otf" />
+    <None Remove="Resources\Fonts\fa-solid.otf" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Fonts\Lato-Black.ttf" />
     <EmbeddedResource Include="Resources\Fonts\Lato-Bold.ttf" />
     <EmbeddedResource Include="Resources\Fonts\Lato-Regular.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\fa-regular.otf" />
+    <EmbeddedResource Include="Resources\Fonts\fa-solid.otf" />
   </ItemGroup>
 </Project>

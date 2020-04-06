@@ -68,6 +68,7 @@
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Effects\SafeAreaPaddingEffect.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
@@ -125,6 +126,9 @@
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="4.5.0.530" />
     <PackageReference Include="Xamarin.Essentials" Version="1.5.2" />
+    <PackageReference Include="Xamarin.Forms.PancakeView">
+      <Version>1.3.7</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
@@ -132,5 +136,19 @@
       <Project>{04991790-FBB2-415A-9531-268B4193DB3E}</Project>
       <Name>TravelMonkey</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\bali.jpg" />
+    <BundleResource Include="Resources\bali%402x.jpg" />
+    <BundleResource Include="Resources\bali%403x.jpg" />
+    <BundleResource Include="Resources\elba.jpg" />
+    <BundleResource Include="Resources\elba%402x.jpg" />
+    <BundleResource Include="Resources\elba%403x.jpg" />
+    <BundleResource Include="Resources\seattle.jpg" />
+    <BundleResource Include="Resources\seattle%402x.jpg" />
+    <BundleResource Include="Resources\seattle%403x.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Effects\" />
   </ItemGroup>
 </Project>

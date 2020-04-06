@@ -4,6 +4,10 @@
 [assembly: ExportFont("Lato-Bold.ttf")]
 [assembly: ExportFont("Lato-Regular.ttf")]
 
+//TODO: Check out why alias doesn't work
+[assembly: ExportFont("fa-regular.otf", Alias = "FontAwesomeRegular")]
+[assembly: ExportFont("fa-solid.otf", Alias = "FontAwesomeSolid")]
+
 namespace TravelMonkey
 {
     public partial class App : Application

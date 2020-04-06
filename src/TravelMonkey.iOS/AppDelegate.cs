@@ -19,6 +19,9 @@ namespace TravelMonkey.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+
+            UIApplication.SharedApplication.StatusBarStyle = UIStatusBarStyle.LightContent;
+
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
