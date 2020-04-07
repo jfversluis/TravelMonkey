@@ -14,6 +14,9 @@
     <PackageReference Include="Xamarin.Forms" Version="4.5.0.530" />
     <PackageReference Include="Xamarin.Essentials" Version="1.5.2" />
     <PackageReference Include="Xamarin.Forms.PancakeView" Version="1.3.7" />
+    <PackageReference Include="Xam.Plugin.Media" Version="5.0.1" />
+    <PackageReference Include="Acr.UserDialogs" Version="7.1.0.442" />
+    <PackageReference Include="Microsoft.Azure.CognitiveServices.Vision.ComputerVision" Version="5.0.0" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -21,6 +24,8 @@
     <Folder Include="ViewModels\" />
     <Folder Include="Models\" />
     <Folder Include="Effects\" />
+    <Folder Include="Views\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Resources\Fonts\Lato-Black.ttf" />
@@ -35,5 +40,11 @@
     <EmbeddedResource Include="Resources\Fonts\Lato-Regular.ttf" />
     <EmbeddedResource Include="Resources\Fonts\fa-regular.otf" />
     <EmbeddedResource Include="Resources\Fonts\fa-solid.otf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

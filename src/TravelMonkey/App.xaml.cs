@@ -1,4 +1,5 @@
 ﻿using Xamarin.Forms;
+using TravelMonkey.Views;
 
 [assembly: ExportFont("Lato-Black.ttf")]
 [assembly: ExportFont("Lato-Bold.ttf")]

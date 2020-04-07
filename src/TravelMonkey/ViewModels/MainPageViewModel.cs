@@ -1,14 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
+﻿using System.Collections.Generic;
+using System.Timers;
 using TravelMonkey.Models;
 
 namespace TravelMonkey.ViewModels
 {
-    public class MainPageViewModel : INotifyPropertyChanged
+    public class MainPageViewModel : BaseViewModel
     {
+        private Timer _slideShowTimer = new Timer(5000);
+
         public List<Destination> Destinations { get; set; } = new List<Destination>() {
+            new Destination
+                 {
+                     Title = "Seattle",
+                     ImageUrl = "seattle.jpg",
+                     Rating = 4.4f,
+                     Votes = 3829
+                 },
                  new Destination
                  {
                      Title = "Ulun Danu Beratan Temple",
@@ -25,17 +32,36 @@ namespace TravelMonkey.ViewModels
                  }
         };
 
-        public string[] Places { get; set; } = new string[] { "seattle.jpg", "bali.jpg", "elba.jpg" };
-        public string CurrentPlace { get; set; }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+        private Destination _currentDestination;
+        public Destination CurrentDestination
         {
-            if (PropertyChanged != null)
+            get => _currentDestination;
+            set => Set(ref _currentDestination, value);
+        }
+
+        public MainPageViewModel()
+        {
+            CurrentDestination = Destinations[0];
+
+            _slideShowTimer.Elapsed += (o, a) =>
             {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
+                var currentIdx = Destinations.IndexOf(CurrentDestination);
+
+                if (currentIdx == Destinations.Count - 1)
+                    CurrentDestination = Destinations[0];
+                else
+                    CurrentDestination = Destinations[currentIdx + 1];
+            };
+        }
+
+        public void StartSlideShow()
+        {
+            _slideShowTimer.Start();
+            
+        }
+        public void StopSlideShow()
+        {
+            _slideShowTimer.Stop();
         }
     }
 }
