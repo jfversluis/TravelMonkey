@@ -20,10 +20,10 @@ namespace TravelMonkey.Services
             var result = await _computerVisionClient.AnalyzeImageInStreamAsync(pictureStream, details: new[] { Details.Landmarks }, visualFeatures: new[] { VisualFeatureTypes.Color, VisualFeatureTypes.Description });
 
             // Get most likely description
-            var description = result.Description.Captions.OrderByDescending(d => d.Confidence).First().Text;
+            var description = result.Description.Captions.OrderByDescending(d => d.Confidence).FirstOrDefault()?.Text ?? "nothing! No description found";
 
             // Get accent color
-            var firstColor = Color.FromHex($"#{result.Color.AccentColor}");
+            var accentColor = Color.FromHex($"#{result.Color.AccentColor}");
 
             // Determine if there are any landmarks to be seen
             var landmark = result.Categories.FirstOrDefault(c => c.Detail != null && c.Detail.Landmarks.Any());
@@ -33,7 +33,8 @@ namespace TravelMonkey.Services
             landmarkDescription = landmark != null ? $"I think I see the {landmark.Detail.Landmarks.OrderByDescending(l => l.Confidence).First().Name}"
                     : "";
 
-            return new AddPictureResult(description, firstColor, landmarkDescription);
+            // Wrap in our result object and send along
+            return new AddPictureResult(description, accentColor, landmarkDescription);
         }
     }
 }

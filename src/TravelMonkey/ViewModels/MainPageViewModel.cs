@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Timers;
+using TravelMonkey.Data;
 using TravelMonkey.Models;
 
 namespace TravelMonkey.ViewModels
@@ -8,29 +10,9 @@ namespace TravelMonkey.ViewModels
     {
         private Timer _slideShowTimer = new Timer(5000);
 
-        public List<Destination> Destinations { get; set; } = new List<Destination>() {
-            new Destination
-                 {
-                     Title = "Seattle",
-                     ImageUrl = "seattle.jpg",
-                     Rating = 4.4f,
-                     Votes = 3829
-                 },
-                 new Destination
-                 {
-                     Title = "Ulun Danu Beratan Temple",
-                     ImageUrl = "bali.jpg",
-                     Rating = 4.4f,
-                     Votes = 3829
-                 },
-                 new Destination
-                 {
-                     Title = "Isola d'Elba",
-                     ImageUrl = "elba.jpg",
-                     Rating = 4.9f,
-                     Votes = 9783
-                 }
-        };
+        public List<Destination> Destinations => MockDataStore.Destinations;
+        public ObservableCollection<PictureEntry> Pictures => MockDataStore.Pictures;
+        public ObservableCollection<ReceiptEntry> Receipts => MockDataStore.Receipts;
 
         private Destination _currentDestination;
         public Destination CurrentDestination

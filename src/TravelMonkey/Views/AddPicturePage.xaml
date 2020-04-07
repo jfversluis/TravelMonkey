@@ -17,7 +17,7 @@
                             <TapGestureRecognizer Command="{Binding TakePhotoCommand}" />
                         </Image.GestureRecognizers>
                     </Image>
-                    <Label Text="Tap to add picture" TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="Fill" VerticalOptions="Fill" IsVisible="{Binding ShowImagePlaceholder}">
+                    <Label Text="Tap to add picture" TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="Fill" VerticalOptions="Fill" IsVisible="{Binding ShowImagePlaceholder}" FontSize="12" FontFamily="Lato-Regular">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding TakePhotoCommand}" />
                         </Label.GestureRecognizers>

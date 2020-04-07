@@ -10,6 +10,8 @@ namespace TravelMonkey.Views
             InitializeComponent();
 
             BindingContext = new AddPicturePageViewModel();
+
+            MessagingCenter.Subscribe<AddPicturePageViewModel>(this, Constants.PictureAddedMessage, async (vm) => await Navigation.PopModalAsync(true));
         }
     }
 }

@@ -1,59 +1,60 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:d="http://xamarin.com/schemas/2014/forms/design" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:custom="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:effect="clr-namespace:TravelMonkey.Effects" mc:Ignorable="d" x:Class="TravelMonkey.Views.MainPage">
-    <StackLayout>
-        <!-- Hero image -->
+    <ScrollView>
+        <StackLayout>
+            <!-- Hero image -->
 
-        <custom:PancakeView HorizontalOptions="Fill" VerticalOptions="Start" CornerRadius="0,0,0,40" HeightRequest="350">
-            <Grid>
-                <CarouselView PeekAreaInsets="-1" Margin="0,-1,0,0" x:Name="TheCarousel" ItemsSource="{Binding Destinations}" CurrentItem="{Binding CurrentDestination}">
-                    <CarouselView.ItemTemplate>
-                        <DataTemplate>
-                            <Image Source="{Binding ImageUrl}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Aspect="AspectFill" />
-                        </DataTemplate>
-                    </CarouselView.ItemTemplate>
+            <custom:PancakeView HorizontalOptions="Fill" VerticalOptions="Start" CornerRadius="0,0,0,40" HeightRequest="350">
+                <Grid>
+                    <CarouselView PeekAreaInsets="-1" Margin="0,-1,0,0" x:Name="TheCarousel" ItemsSource="{Binding Destinations}" CurrentItem="{Binding CurrentDestination}">
+                        <CarouselView.ItemTemplate>
+                            <DataTemplate>
+                                <Image Source="{Binding ImageUrl}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Aspect="AspectFill" />
+                            </DataTemplate>
+                        </CarouselView.ItemTemplate>
 
-                </CarouselView>
-                <StackLayout>
-                    <StackLayout Spacing="0" VerticalOptions="Start" Orientation="Horizontal">
-                        <StackLayout.Margin>
-                            <OnPlatform x:TypeArguments="Thickness">
-                                <On Platform="iOS" Value="0,12,0,0" />
-                                <On Platform="Android" Value="0,24,0,0" />
-                            </OnPlatform>
-                        </StackLayout.Margin>
-                        <StackLayout.Effects>
-                            <effect:SafeAreaPaddingEffect />
-                        </StackLayout.Effects>
-                        <StackLayout Margin="20,0,20,0" Spacing="0">
+                    </CarouselView>
+                    <StackLayout>
+                        <StackLayout Spacing="0" VerticalOptions="Start" Orientation="Horizontal">
                             <StackLayout.Margin>
                                 <OnPlatform x:TypeArguments="Thickness">
-                                    <On Platform="iOS" Value="20,0,20,0" />
-                                    <On Platform="Android" Value="20,0,20,20" />
+                                    <On Platform="iOS" Value="0,12,0,0" />
+                                    <On Platform="Android" Value="0,24,0,0" />
                                 </OnPlatform>
                             </StackLayout.Margin>
-                            <Label TextColor="#fff" FontFamily="Lato-Black" FontSize="22" Text="Hi there," />
-                            <Label TextColor="#fff" FontFamily="Lato-Black" FontSize="22" Text="Where do you want to go?" />
+                            <StackLayout.Effects>
+                                <effect:SafeAreaPaddingEffect />
+                            </StackLayout.Effects>
+                            <StackLayout Margin="20,0,20,0" Spacing="0">
+                                <StackLayout.Margin>
+                                    <OnPlatform x:TypeArguments="Thickness">
+                                        <On Platform="iOS" Value="20,0,20,0" />
+                                        <On Platform="Android" Value="20,0,20,20" />
+                                    </OnPlatform>
+                                </StackLayout.Margin>
+                                <Label TextColor="#fff" FontFamily="Lato-Black" FontSize="22" Text="Hi there," />
+                                <Label TextColor="#fff" FontFamily="Lato-Black" FontSize="22" Text="Where do you want to go?" />
+                            </StackLayout>
+                            <Label Text="" FontSize="24" Margin="0,0,20,0" HorizontalOptions="EndAndExpand" VerticalOptions="Center" FontFamily="FontAwesomeRegular" TextColor="#fff" />
                         </StackLayout>
-                        <Label Text="" FontSize="24" Margin="0,0,20,0" HorizontalOptions="EndAndExpand" VerticalOptions="Center" FontFamily="FontAwesomeRegular" TextColor="#fff" />
+                        <custom:PancakeView Margin="20,0" HeightRequest="50" BackgroundColor="#44ffffff" CornerRadius="8" VerticalOptions="Start" HorizontalOptions="FillAndExpand">
+                            <StackLayout Orientation="Horizontal" VerticalOptions="Center" Margin="20,0">
+                                <Label FontSize="20" VerticalOptions="Center" TextColor="#fff" FontFamily="FontAwesomeSolid" Text="" Margin="0,0,12,0" />
+                                <Entry FontFamily="Lato-Regular" TextColor="#fff" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
+                            </StackLayout>
+                        </custom:PancakeView>
                     </StackLayout>
-                    <custom:PancakeView Margin="20,0" HeightRequest="50" BackgroundColor="#44ffffff" CornerRadius="8" VerticalOptions="Start" HorizontalOptions="FillAndExpand">
-                        <StackLayout Orientation="Horizontal" VerticalOptions="Center" Margin="20,0">
-                            <Label FontSize="20" VerticalOptions="Center" TextColor="#fff" FontFamily="FontAwesomeSolid" Text="" Margin="0,0,12,0" />
-                            <Entry FontFamily="Lato-Regular" TextColor="#fff" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
-                        </StackLayout>
-                    </custom:PancakeView>
-                </StackLayout>
-                <custom:PancakeView HeightRequest="100" BackgroundColor="#aaeeeeee" CornerRadius="20,0,0,40" HorizontalOptions="FillAndExpand" VerticalOptions="End">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
-                        <StackLayout Grid.Column="0" Margin="20,0,0,0" Spacing="0" VerticalOptions="Center">
-                            <Label Text="{Binding CurrentDestination.Title}" FontSize="24" FontFamily="Lato-Bold" />
-                            <Label Text="Recommendation" TextColor="#666" FontSize="16" FontFamily="Lato-Regular" />
-                        </StackLayout>
-                        <!--<StackLayout Grid.Column="1" Spacing="0" Margin="0,0,20,0" HorizontalOptions="EndAndExpand" VerticalOptions="Center">
+                    <custom:PancakeView HeightRequest="100" BackgroundColor="#aaeeeeee" CornerRadius="20,0,0,40" HorizontalOptions="FillAndExpand" VerticalOptions="End">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <StackLayout Grid.Column="0" Margin="20,0,0,0" Spacing="0" VerticalOptions="Center">
+                                <Label Text="{Binding CurrentDestination.Title}" FontSize="24" FontFamily="Lato-Bold" />
+                                <Label Text="Recommendation" TextColor="#666" FontSize="16" FontFamily="Lato-Regular" />
+                            </StackLayout>
+                            <!--<StackLayout Grid.Column="1" Spacing="0" Margin="0,0,20,0" HorizontalOptions="EndAndExpand" VerticalOptions="Center">
                             <Label FontSize="20" HorizontalTextAlignment="Center" HorizontalOptions="Center" FontFamily="FontAwesomeSolid">
                                 <Label.FormattedText>
                                     <FormattedString>
@@ -71,72 +72,87 @@
                                 </Label.FormattedText>
                             </Label>
                         </StackLayout>-->
-                    </Grid>
-                </custom:PancakeView>
-            </Grid>
-        </custom:PancakeView>
-
-
-        <!-- Destinations -->
-        <StackLayout Orientation="Horizontal">
-            <Label HorizontalOptions="Start" VerticalOptions="Center" Text="Pictures" FontFamily="Lato-Bold" FontSize="20" Margin="20,20,20,0" />
-            <Label HorizontalOptions="EndAndExpand" VerticalOptions="Center" TextColor="#2687ee" Text="ADD NEW" FontSize="12" FontFamily="Lato-Bold" Margin="20,20,20,0">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="AddNewPicture_Tapped" />
-                </Label.GestureRecognizers>
-            </Label>
-        </StackLayout>
-        
-        <ScrollView Orientation="Horizontal">
-            <StackLayout Spacing="0" Orientation="Horizontal" BindableLayout.ItemsSource="{Binding Destinations}" HeightRequest="120">
-                <BindableLayout.ItemTemplate>
-                    <DataTemplate>
-                        <Grid Padding="10,0">
-                            <custom:PancakeView HeightRequest="120" WidthRequest="200" IsClippedToBounds="true" CornerRadius="12">
-                                <Grid>
-                                    <Image Aspect="AspectFill" Source="{Binding ImageUrl}" />
-                                    <custom:PancakeView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundGradientStartColor="Transparent" BackgroundGradientEndColor="#222" />
-                                    <StackLayout Spacing="0" Margin="12" VerticalOptions="EndAndExpand">
-                                        <Label FontSize="16" FontFamily="Lato-Bold" TextColor="#fff" Text="{Binding Title}" />
-                                        <Label FontSize="12" FontFamily="Lato-Regular" TextColor="#ccc" Text="{Binding RatingVotes}" />
-                                    </StackLayout>
-                                </Grid>
-                            </custom:PancakeView>
                         </Grid>
-                    </DataTemplate>
-                </BindableLayout.ItemTemplate>
-            </StackLayout>
-        </ScrollView>
+                    </custom:PancakeView>
+                </Grid>
+            </custom:PancakeView>
 
-        <!-- Receipts -->
-        <StackLayout Orientation="Horizontal">
-            <Label HorizontalOptions="Start" VerticalOptions="Center" Text="Receipts" FontFamily="Lato-Bold" FontSize="20" Margin="20,20,20,0" />
-            <Label HorizontalOptions="EndAndExpand" VerticalOptions="Center" TextColor="#2687ee" Text="ADD NEW" FontSize="12" FontFamily="Lato-Bold" Margin="20,20,20,0">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="AddNewReceipt_Tapped" />
-                </Label.GestureRecognizers>
-            </Label>
-        </StackLayout>
-        
-        <ScrollView Orientation="Horizontal">
-            <StackLayout Spacing="0" Orientation="Horizontal" BindableLayout.ItemsSource="{Binding Destinations}" HeightRequest="120">
-                <BindableLayout.ItemTemplate>
-                    <DataTemplate>
-                        <Grid Padding="10,0">
-                            <custom:PancakeView HeightRequest="120" WidthRequest="200" IsClippedToBounds="true" CornerRadius="12">
-                                <Grid>
-                                    <Image Aspect="AspectFill" Source="{Binding ImageUrl}" />
-                                    <custom:PancakeView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundGradientStartColor="Transparent" BackgroundGradientEndColor="#222" />
-                                    <StackLayout Spacing="0" Margin="12" VerticalOptions="EndAndExpand">
-                                        <Label FontSize="16" FontFamily="Lato-Bold" TextColor="#fff" Text="{Binding Title}" />
-                                        <Label FontSize="12" FontFamily="Lato-Regular" TextColor="#ccc" Text="{Binding RatingVotes}" />
-                                    </StackLayout>
-                                </Grid>
-                            </custom:PancakeView>
-                        </Grid>
-                    </DataTemplate>
-                </BindableLayout.ItemTemplate>
+
+            <!-- Pictures -->
+            <StackLayout Orientation="Horizontal">
+                <Label HorizontalOptions="Start" VerticalOptions="Center" Text="Pictures" FontFamily="Lato-Bold" FontSize="20" Margin="20,20,20,0" />
+                <Label HorizontalOptions="EndAndExpand" VerticalOptions="Center" TextColor="#2687ee" Text="ADD NEW" FontSize="12" FontFamily="Lato-Bold" Margin="20,20,20,0">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="AddNewPicture_Tapped" />
+                    </Label.GestureRecognizers>
+                </Label>
             </StackLayout>
-        </ScrollView>
-    </StackLayout>
+
+            <ScrollView Orientation="Horizontal">
+                <StackLayout Spacing="0" Orientation="Horizontal" BindableLayout.ItemsSource="{Binding Pictures}" HeightRequest="120">
+                    <BindableLayout.EmptyViewTemplate>
+                        <DataTemplate>
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+                                <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontFamily="Lato-Regular" FontSize="12">No pictures yet, give me your best shots! 📸</Label>
+                            </Grid>
+                        </DataTemplate>
+                    </BindableLayout.EmptyViewTemplate>
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="10,0">
+                                <custom:PancakeView HeightRequest="120" WidthRequest="200" IsClippedToBounds="true" CornerRadius="12">
+                                    <Grid>
+                                        <Image Aspect="AspectFill" Source="{Binding Image}" />
+                                        <custom:PancakeView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundGradientStartColor="Transparent" BackgroundGradientEndColor="#222" />
+                                        <StackLayout Spacing="0" Margin="12" VerticalOptions="EndAndExpand">
+                                            <Label FontSize="16" FontFamily="Lato-Bold" TextColor="#fff" Text="{Binding Description}" />
+                                            <!--<Label FontSize="12" FontFamily="Lato-Regular" TextColor="#ccc" Text="{Binding RatingVotes}" />-->
+                                        </StackLayout>
+                                    </Grid>
+                                </custom:PancakeView>
+                            </Grid>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+            </ScrollView>
+
+            <!-- Receipts -->
+            <StackLayout Orientation="Horizontal">
+                <Label HorizontalOptions="Start" VerticalOptions="Center" Text="Receipts" FontFamily="Lato-Bold" FontSize="20" Margin="20,20,20,0" />
+                <Label HorizontalOptions="EndAndExpand" VerticalOptions="Center" TextColor="#2687ee" Text="ADD NEW" FontSize="12" FontFamily="Lato-Bold" Margin="20,20,20,0">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="AddNewReceipt_Tapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+
+            <ScrollView Orientation="Horizontal">
+                <StackLayout Spacing="0" Orientation="Horizontal" BindableLayout.ItemsSource="{Binding Receipts}" HeightRequest="120">
+                    <BindableLayout.EmptyViewTemplate>
+                        <DataTemplate>
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+                                <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontFamily="Lato-Regular" FontSize="12">No receipts here. Guess this is a cheap trip 🤑</Label>
+                            </Grid>
+                        </DataTemplate>
+                    </BindableLayout.EmptyViewTemplate>
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="10,0">
+                                <custom:PancakeView HeightRequest="120" WidthRequest="200" IsClippedToBounds="true" CornerRadius="12">
+                                    <Grid>
+                                        <Image Aspect="AspectFill" Source="{Binding ImageUrl}" />
+                                        <custom:PancakeView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundGradientStartColor="Transparent" BackgroundGradientEndColor="#222" />
+                                        <StackLayout Spacing="0" Margin="12" VerticalOptions="EndAndExpand">
+                                            <Label FontSize="16" FontFamily="Lato-Bold" TextColor="#fff" Text="{Binding Title}" />
+                                            <Label FontSize="12" FontFamily="Lato-Regular" TextColor="#ccc" Text="{Binding RatingVotes}" />
+                                        </StackLayout>
+                                    </Grid>
+                                </custom:PancakeView>
+                            </Grid>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>

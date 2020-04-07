@@ -5,12 +5,11 @@ using Xamarin.Forms;
 
 namespace TravelMonkey.Views
 {
-    // Learn more about making custom code visible in the Xamarin.Forms previewer
-    // by visiting https://aka.ms/xamarinforms-previewer
     [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage
     {
-        readonly MainPageViewModel _mainPageViewModel = new MainPageViewModel();
+        private readonly MainPageViewModel _mainPageViewModel = new MainPageViewModel();
+
         public MainPage()
         {
             InitializeComponent();
@@ -37,6 +36,8 @@ namespace TravelMonkey.Views
             Navigation.PushModalAsync(new AddPicturePage());
         }
 
-        private void AddNewReceipt_Tapped(object sender, EventArgs e) { }
+        private void AddNewReceipt_Tapped(object sender, EventArgs e)
+        {
+        }
     }
 }
