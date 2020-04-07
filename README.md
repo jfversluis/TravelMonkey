@@ -1,6 +1,8 @@
 # ![TravelMonkey mascot](assets/TravelMonkey-100px.png) TravelMonkey
 
-Fasten your seatbelts!
+ [![Build Status](https://dev.azure.com/jfversluis/TravelMonkey/_apis/build/status/jfversluis.TravelMonkey?branchName=master)](https://dev.azure.com/jfversluis/TravelMonkey/_build/latest?definitionId=44&branchName=master)
+
+Fasten your seatbelts! You may not be able to travel now... but this summer when you can, this app is going to be your best friend!
 
 Extend this intelligent travel companion app and be prepared for your next travel. Oh, and did we mention you will get some cool swag to take in your suitcase?
 
