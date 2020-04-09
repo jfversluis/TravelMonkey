@@ -103,7 +103,7 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="4.6.0.529-pre3" />
+    <PackageReference Include="Xamarin.Forms" Version="4.6.0.616-pre4" />
     <PackageReference Include="Xamarin.Essentials" Version="1.5.2" />
     <PackageReference Include="Xamarin.Forms.PancakeView">
       <Version>1.3.7</Version>
@@ -132,6 +132,10 @@
     <BundleResource Include="Resources\seattle.jpg" />
     <BundleResource Include="Resources\seattle%402x.jpg" />
     <BundleResource Include="Resources\seattle%403x.jpg" />
+    <BundleResource Include="Resources\en.png" />
+    <BundleResource Include="Resources\fr.png" />
+    <BundleResource Include="Resources\nl.png" />
+    <BundleResource Include="Resources\es.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Effects\" />

@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:effect="clr-namespace:TravelMonkey.Effects" xmlns:converters="clr-namespace:TravelMonkey.Converters" xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" x:Class="TravelMonkey.Views.TranslationResultPage" BackgroundColor="#F3F3F3">
+    <ContentPage.Resources>
+        <converters:LanguageCodeToDescriptionConverter x:Key="LanguageCodeToDescriptionConverter" />
+    </ContentPage.Resources>
+    <StackLayout>
+        <StackLayout.Effects>
+            <effect:SafeAreaPaddingEffect />
+        </StackLayout.Effects>
+
+        <Button Text="Close" Clicked="Button_Clicked" HorizontalOptions="Center" FontFamily="Lato-Bold" />
+
+        <Entry Margin="15,0" Text="{Binding InputText, Mode=OneWay}" ReturnCommand="{Binding TranslateTextCommand}" ReturnCommandParameter="{Binding Text, Source={RelativeSource Mode=Self}}" FontSize="20" FontFamily="Lato-Regular" BackgroundColor="#F3F3F3" Placeholder="Enter text to translate" />
+        
+        <ScrollView>
+            <StackLayout BindableLayout.ItemsSource="{Binding Translations}" Padding="10">
+                <BindableLayout.EmptyViewTemplate>
+                    <DataTemplate>
+                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+                                <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontFamily="Lato-Regular" FontSize="12">No bueno translationo 🤷‍♀️</Label>
+                            </Grid>
+                    </DataTemplate>
+                </BindableLayout.EmptyViewTemplate>
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <yummy:PancakeView BackgroundColor="White" Margin="7" CornerRadius="10" HasShadow="True">
+                            <Grid Margin="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.17*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Source="{Binding Key, StringFormat='{0}.png'}" WidthRequest="40" HorizontalOptions="Start" />
+                                <Label Grid.Column="1" Grid.Row="0" Text="{Binding Key, Converter={StaticResource LanguageCodeToDescriptionConverter}, ConverterParameter={Binding Key}}" FontFamily="Lato-Bold" FontSize="Small" VerticalOptions="End" />
+                                <Label Grid.Column="1" Grid.Row="1" Text="{Binding Value}" FontFamily="Lato-Regular" FontSize="20" />
+                            </Grid>
+                        </yummy:PancakeView>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
+</ContentPage>

@@ -17,6 +17,8 @@ namespace TravelMonkey
         {
             InitializeComponent();
 
+            Device.SetFlags(new[] { "AppTheme_Experimental" });
+
             MainPage = new MainPage();
         }
 

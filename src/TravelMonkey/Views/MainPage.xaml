@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:d="http://xamarin.com/schemas/2014/forms/design" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:custom="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:effect="clr-namespace:TravelMonkey.Effects" mc:Ignorable="d" x:Class="TravelMonkey.Views.MainPage">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:d="http://xamarin.com/schemas/2014/forms/design" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:effect="clr-namespace:TravelMonkey.Effects" mc:Ignorable="d" x:Class="TravelMonkey.Views.MainPage">
     <ScrollView>
         <StackLayout>
             <!-- Hero image -->
 
-            <custom:PancakeView HorizontalOptions="Fill" VerticalOptions="Start" CornerRadius="0,0,0,40" HeightRequest="350">
+            <yummy:PancakeView HorizontalOptions="Fill" VerticalOptions="Start" CornerRadius="0,0,0,40" HeightRequest="350">
                 <Grid>
                     <CarouselView PeekAreaInsets="-1" Margin="0,-1,0,0" x:Name="TheCarousel" ItemsSource="{Binding Destinations}" CurrentItem="{Binding CurrentDestination}">
                         <CarouselView.ItemTemplate>
@@ -37,14 +37,14 @@
                             </StackLayout>
                             <Label Text="" FontSize="24" Margin="0,0,20,0" HorizontalOptions="EndAndExpand" VerticalOptions="Center" FontFamily="FontAwesomeRegular" TextColor="#fff" />
                         </StackLayout>
-                        <custom:PancakeView Margin="20,0" HeightRequest="50" BackgroundColor="#44ffffff" CornerRadius="8" VerticalOptions="Start" HorizontalOptions="FillAndExpand">
+                        <yummy:PancakeView Margin="20,0" HeightRequest="50" BackgroundColor="#44ffffff" CornerRadius="8" VerticalOptions="Start" HorizontalOptions="FillAndExpand">
                             <StackLayout Orientation="Horizontal" VerticalOptions="Center" Margin="20,0">
                                 <Label FontSize="20" VerticalOptions="Center" TextColor="#fff" FontFamily="FontAwesomeSolid" Text="" Margin="0,0,12,0" />
-                                <Entry FontFamily="Lato-Regular" TextColor="#fff" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="FillAndExpand" />
+                                <Entry x:Name="TranslateTextEntry" FontFamily="Lato-Regular" TextColor="#fff" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Completed="Entry_Completed" />
                             </StackLayout>
-                        </custom:PancakeView>
+                        </yummy:PancakeView>
                     </StackLayout>
-                    <custom:PancakeView HeightRequest="100" BackgroundColor="#aaeeeeee" CornerRadius="20,0,0,40" HorizontalOptions="FillAndExpand" VerticalOptions="End">
+                    <yummy:PancakeView HeightRequest="100" BackgroundColor="#aaeeeeee" CornerRadius="20,0,0,40" HorizontalOptions="FillAndExpand" VerticalOptions="End">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
@@ -73,9 +73,9 @@
                             </Label>
                         </StackLayout>-->
                         </Grid>
-                    </custom:PancakeView>
+                    </yummy:PancakeView>
                 </Grid>
-            </custom:PancakeView>
+            </yummy:PancakeView>
 
 
             <!-- Pictures -->
@@ -100,16 +100,16 @@
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
                             <Grid Padding="10,0">
-                                <custom:PancakeView HeightRequest="120" WidthRequest="200" IsClippedToBounds="true" CornerRadius="12">
+                                <yummy:PancakeView HeightRequest="120" WidthRequest="200" IsClippedToBounds="true" CornerRadius="12">
                                     <Grid>
                                         <Image Aspect="AspectFill" Source="{Binding Image}" />
-                                        <custom:PancakeView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundGradientStartColor="Transparent" BackgroundGradientEndColor="#222" />
+                                        <yummy:PancakeView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundGradientStartColor="Transparent" BackgroundGradientEndColor="#222" />
                                         <StackLayout Spacing="0" Margin="12" VerticalOptions="EndAndExpand">
                                             <Label FontSize="16" FontFamily="Lato-Bold" TextColor="#fff" Text="{Binding Description}" />
                                             <!--<Label FontSize="12" FontFamily="Lato-Regular" TextColor="#ccc" Text="{Binding RatingVotes}" />-->
                                         </StackLayout>
                                     </Grid>
-                                </custom:PancakeView>
+                                </yummy:PancakeView>
                             </Grid>
                         </DataTemplate>
                     </BindableLayout.ItemTemplate>
@@ -138,16 +138,16 @@
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
                             <Grid Padding="10,0">
-                                <custom:PancakeView HeightRequest="120" WidthRequest="200" IsClippedToBounds="true" CornerRadius="12">
+                                <yummy:PancakeView HeightRequest="120" WidthRequest="200" IsClippedToBounds="true" CornerRadius="12">
                                     <Grid>
                                         <Image Aspect="AspectFill" Source="{Binding ImageUrl}" />
-                                        <custom:PancakeView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundGradientStartColor="Transparent" BackgroundGradientEndColor="#222" />
+                                        <yummy:PancakeView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundGradientStartColor="Transparent" BackgroundGradientEndColor="#222" />
                                         <StackLayout Spacing="0" Margin="12" VerticalOptions="EndAndExpand">
                                             <Label FontSize="16" FontFamily="Lato-Bold" TextColor="#fff" Text="{Binding Title}" />
                                             <Label FontSize="12" FontFamily="Lato-Regular" TextColor="#ccc" Text="{Binding RatingVotes}" />
                                         </StackLayout>
                                     </Grid>
-                                </custom:PancakeView>
+                                </yummy:PancakeView>
                             </Grid>
                         </DataTemplate>
                     </BindableLayout.ItemTemplate>

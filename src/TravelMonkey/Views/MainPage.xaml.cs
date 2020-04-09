@@ -31,13 +31,25 @@ namespace TravelMonkey.Views
             _mainPageViewModel.StopSlideShow();
         }
 
-        private void AddNewPicture_Tapped(object sender, EventArgs e)
+        private async void AddNewPicture_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new AddPicturePage());
+            await Navigation.PushModalAsync(new AddPicturePage());
         }
 
         private void AddNewReceipt_Tapped(object sender, EventArgs e)
         {
+        }
+
+        private async void Entry_Completed(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(TranslateTextEntry.Text))
+            {
+                await DisplayAlert("No text entered", "You didn't enter any text!", "OK");
+                return;
+            }
+
+            await Navigation.PushModalAsync(new TranslationResultPage(TranslateTextEntry.Text));
+            TranslateTextEntry.Text = "";
         }
     }
 }

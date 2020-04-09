@@ -38,6 +38,8 @@ My good friend [Steven Thewissen](https://thewissen.io/) has been so kind to cre
 
 Images used in the app are from...
 
+- Country flags from [flaticon.com](https://www.flaticon.com/packs/countrys-flags)
+
 I have been doing some streams to create this app, which can be found [here](https://www.youtube.com/watch?v=Y-rd_GP5dag&list=PLfbOp004UaYXwpVzT1HQxHqwzGg2cLWFZ).
 
 ### Third-party Libraries
