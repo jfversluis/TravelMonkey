@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Microsoft.Azure.CognitiveServices.Search.ImageSearch;
+﻿using System.Threading.Tasks;
 using TravelMonkey.Data;
+using TravelMonkey.Services;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -10,6 +8,8 @@ namespace TravelMonkey.Views
 {
     public partial class SplashScreen : ContentPage
     {
+        private readonly BingSearchService _bingSearchService = new BingSearchService();
+
         public SplashScreen()
         {
             InitializeComponent();
@@ -39,20 +39,7 @@ namespace TravelMonkey.Views
 
         private async void InitializeData()
         {
-            var searchDestinations = new[] { "Seattle", "Maui", "Amsterdam", "Antarctica" };
-
-            var client = new ImageSearchClient(new ApiKeyServiceClientCredentials(ApiKeys.BingImageSearch));
-
-            foreach (var destination in searchDestinations)
-            {
-                var result = client.Images.SearchAsync(destination, color: "blue", minWidth: 500, minHeight: 500, imageType: "Photo", license: "Public", count: 1, maxHeight: 1200, maxWidth: 1200).Result;
-
-                MockDataStore.Destinations.Add(new Models.Destination
-                {
-                    Title = destination,
-                    ImageUrl = result.Value[0].ContentUrl
-                });
-            }
+            MockDataStore.Destinations = _bingSearchService.GetDestinations();
 
             await MainThread.InvokeOnMainThreadAsync(AnimateTransition);
 
