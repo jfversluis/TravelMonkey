@@ -1,7 +1,5 @@
 ﻿using Xamarin.Forms;
 using TravelMonkey.Views;
-using Microsoft.Azure.CognitiveServices.Search.ImageSearch;
-using TravelMonkey.Data;
 
 [assembly: ExportFont("Lato-Black.ttf", Alias = "LatoBlack")]
 [assembly: ExportFont("Lato-Bold.ttf", Alias = "LatoBold")]
@@ -13,27 +11,11 @@ namespace TravelMonkey
 {
     public partial class App : Application
     {
-        private string[] searchDestinations = new[] { "Seattle", "Maui", "Amsterdam", "Antarctica" };
-
         public App()
         {
-            var client = new ImageSearchClient(new ApiKeyServiceClientCredentials(ApiKeys.BingImageSearch));
-
-
-            foreach (var destination in searchDestinations)
-            {
-                var result = client.Images.SearchAsync(destination, color: "blue", minWidth: 500, minHeight: 500, imageType: "Photo", license: "Public", count: 1, maxHeight: 1200, maxWidth: 1200).Result;
-
-                MockDataStore.Destinations.Add(new Models.Destination
-                {
-                    Title = destination,
-                    ImageUrl = result.Value[0].ContentUrl
-                });
-            }
-
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new SplashScreen();
         }
 
         protected override void OnStart()

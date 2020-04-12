@@ -123,19 +123,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\bali.jpg" />
-    <BundleResource Include="Resources\bali%402x.jpg" />
-    <BundleResource Include="Resources\bali%403x.jpg" />
-    <BundleResource Include="Resources\elba.jpg" />
-    <BundleResource Include="Resources\elba%402x.jpg" />
-    <BundleResource Include="Resources\elba%403x.jpg" />
-    <BundleResource Include="Resources\seattle.jpg" />
-    <BundleResource Include="Resources\seattle%402x.jpg" />
-    <BundleResource Include="Resources\seattle%403x.jpg" />
     <BundleResource Include="Resources\en.png" />
     <BundleResource Include="Resources\fr.png" />
     <BundleResource Include="Resources\nl.png" />
     <BundleResource Include="Resources\es.png" />
+    <BundleResource Include="Resources\TravelMonkey.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Effects\" />
