@@ -88,7 +88,7 @@
                 </Label>
             </StackLayout>
 
-            <ScrollView Orientation="Horizontal">
+            <ScrollView HorizontalScrollBarVisibility="Never" Orientation="Horizontal">
                 <StackLayout Spacing="0" Orientation="Horizontal" BindableLayout.ItemsSource="{Binding Pictures}" HeightRequest="120">
                     <BindableLayout.EmptyViewTemplate>
                         <DataTemplate>
@@ -126,7 +126,7 @@
                 </Label>
             </StackLayout>
 
-            <ScrollView Orientation="Horizontal">
+            <ScrollView HorizontalScrollBarVisibility="Never" Orientation="Horizontal">
                 <StackLayout Spacing="0" Orientation="Horizontal" BindableLayout.ItemsSource="{Binding Receipts}" HeightRequest="120">
                     <BindableLayout.EmptyViewTemplate>
                         <DataTemplate>

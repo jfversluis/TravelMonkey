@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using TravelMonkey.Models;
 using TravelMonkey.Models.CognitiveServices;
 
 namespace TravelMonkey.Services
@@ -25,7 +25,7 @@ namespace TravelMonkey.Services
                 request.RequestUri = new Uri(ApiKeys.TranslationsEndpoint + "/translate?api-version=3.0&to=en&to=nl&to=es&to=fr");
                 request.Content = new StringContent(requestBody, Encoding.UTF8, "application/json");
                 request.Headers.Add("Ocp-Apim-Subscription-Key", ApiKeys.TranslationsApiKey);
-
+                
                 // Send the request and get response.
                 HttpResponseMessage response = await client.SendAsync(request).ConfigureAwait(false);
 

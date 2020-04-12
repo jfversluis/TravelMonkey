@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace TravelMonkey.Models.CognitiveServices
+namespace TravelMonkey.Models
 {
     public class TranslateTextResult
     {

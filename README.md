@@ -15,6 +15,7 @@ This might include, but is certainly not limited to:
 
 * Get dynamic destination images through Bing
 * Also recognize celebrities in pictures
+* Abstract the different services into an Azure Function
 * Make sure the images are safe to show your family
 * Improve design
 * Add a detail screen to be able to reopen the pictures or receipts
@@ -36,9 +37,9 @@ Thank you for traveling with TravelMonkey!
 ## Credits, Recognitions & Others
 My good friend [Steven Thewissen](https://thewissen.io/) has been so kind to create the TravelMonkey logo as well as lending me his [awesome UI design](https://github.com/sthewissen/KickassUI.Traveler) for this app.
 
-Images used in the app are from...
+### Images
 
-- Country flags from [flaticon.com](https://www.flaticon.com/packs/countrys-flags)
+ * Country flags from [flaticon.com](https://www.flaticon.com/packs/countrys-flags)
 
 I have been doing some streams to create this app, which can be found [here](https://www.youtube.com/watch?v=Y-rd_GP5dag&list=PLfbOp004UaYXwpVzT1HQxHqwzGg2cLWFZ).
 

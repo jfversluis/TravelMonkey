@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="TravelMonkey.Views.AddPicturePage" xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:effect="clr-namespace:TravelMonkey.Effects" Title="Add Picture">
-    <yummy:PancakeView BackgroundGradientStartColor="{Binding PictureAccentColor}" BackgroundGradientEndColor="LightGray" BackgroundGradientAngle="40">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:effect="clr-namespace:TravelMonkey.Effects" x:Class="TravelMonkey.Views.AddReceiptPage">
+    <yummy:PancakeView BackgroundGradientStartColor="SteelBlue" BackgroundGradientEndColor="LightGray" BackgroundGradientAngle="40">
         <yummy:PancakeView.Effects>
             <effect:SafeAreaPaddingEffect />
         </yummy:PancakeView.Effects>
@@ -19,7 +19,7 @@
                             <TapGestureRecognizer Command="{Binding TakePhotoCommand}" />
                         </Image.GestureRecognizers>
                     </Image>
-                    <Label Text="Tap to add picture" TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="Fill" VerticalOptions="Fill" IsVisible="{Binding ShowImagePlaceholder}" FontSize="Large" FontFamily="Lato-Regular">
+                    <Label Text="Tap to add receipt" TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="Fill" VerticalOptions="Fill" IsVisible="{Binding ShowImagePlaceholder}" FontSize="Large" FontFamily="Lato-Regular">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding TakePhotoCommand}" />
                         </Label.GestureRecognizers>
@@ -28,10 +28,10 @@
             </yummy:PancakeView>
             
             <yummy:PancakeView Grid.Row="2" BackgroundColor="#44FFFFFF" CornerRadius="5" Padding="2">
-                <Label Text="{Binding PictureDescription}" HorizontalTextAlignment="Center" />
+                <Label Text="{Binding ReceiptTotal}" HorizontalTextAlignment="Center" />
             </yummy:PancakeView>
 
-            <Button Grid.Row="3" Text="Add Picture" FontFamily="Lato-Bold" BackgroundColor="{Binding PictureAccentColor}" BorderColor="White" BorderWidth="1" TextColor="White" Command="{Binding AddPictureCommand}" />
+            <Button Grid.Row="3" Text="Add Receipt" FontFamily="Lato-Bold" BackgroundColor="SteelBlue" BorderColor="White" BorderWidth="1" TextColor="White" Command="{Binding AddPictureCommand}" />
 
             <Grid Grid.RowSpan="4" IsVisible="{Binding IsPosting}" BackgroundColor="#B0000000" Margin="-7">
                 <ActivityIndicator IsRunning="true" HorizontalOptions="Center" VerticalOptions="Center" Color="White" />

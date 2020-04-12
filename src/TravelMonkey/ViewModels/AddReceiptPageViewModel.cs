@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Acr.UserDialogs;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
@@ -9,9 +10,9 @@ using Xamarin.Forms;
 
 namespace TravelMonkey.ViewModels
 {
-    public class AddPicturePageViewModel : BaseViewModel
+    public class AddReceiptPageViewModel : BaseViewModel
     {
-        private readonly ComputerVisionService _computerVisionService = new ComputerVisionService();
+        private readonly ReceiptsRecognizerService _receiptsRecognizerService = new ReceiptsRecognizerService();
         private MediaFile _photo;
         private StreamImageSource _photoSource;
         private bool _isPosting;
@@ -40,13 +41,7 @@ namespace TravelMonkey.ViewModels
             set => Set(ref _isPosting, value);
         }
 
-        public Color PictureAccentColor
-        {
-            get => _pictureAccentColor;
-            set => Set(ref _pictureAccentColor, value);
-        }
-
-        public string PictureDescription
+        public string ReceiptTotal
         {
             get => _pictureDescription;
             set => Set(ref _pictureDescription, value);
@@ -55,17 +50,17 @@ namespace TravelMonkey.ViewModels
         public Command TakePhotoCommand { get; }
         public Command AddPictureCommand { get; }
 
-        public AddPicturePageViewModel()
+        public AddReceiptPageViewModel()
         {
             TakePhotoCommand = new Command(async () => await TakePhoto());
             AddPictureCommand = new Command(() =>
-             {
-                 if (_photo == null)
-                     return;
+            {
+                if (_photo == null)
+                    return;
 
-                 MockDataStore.Pictures.Add(new PictureEntry { Description = _pictureDescription, Image = _photoSource });
-                 MessagingCenter.Send(this, Constants.PictureAddedMessage);
-             });
+                MockDataStore.Receipts.Add(new ReceiptEntry());
+                MessagingCenter.Send(this, Constants.ReceiptAddedMessage);
+            });
         }
 
         private async Task TakePhoto()
@@ -75,13 +70,13 @@ namespace TravelMonkey.ViewModels
 
             if (result.Equals("Take photo"))
             {
-                _photo = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions { PhotoSize = PhotoSize.Small });
+                _photo = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions { PhotoSize = PhotoSize.Full });
 
                 PhotoSource = (StreamImageSource)ImageSource.FromStream(() => _photo.GetStream());
             }
             else if (result.Equals("Choose photo"))
             {
-                _photo = await CrossMedia.Current.PickPhotoAsync(new PickMediaOptions { PhotoSize = PhotoSize.Small });
+                _photo = await CrossMedia.Current.PickPhotoAsync(new PickMediaOptions { PhotoSize = PhotoSize.Full });
 
                 PhotoSource = (StreamImageSource)ImageSource.FromStream(() => _photo.GetStream());
             }
@@ -107,14 +102,12 @@ namespace TravelMonkey.ViewModels
             {
                 var pictureStream = _photo.GetStreamWithImageRotatedForExternalStorage();
 
-                var result = await _computerVisionService.AddPicture(pictureStream);
+                var result = await _receiptsRecognizerService.RecognizeReceipt(pictureStream);
 
-                PictureAccentColor = result.AccentColor;
-
-                PictureDescription = result.Description;
-
-                if (!string.IsNullOrWhiteSpace(result.LandmarkDescription))
-                    PictureDescription += $". {result.LandmarkDescription}";
+                if (!result.Succeeded)
+                    ReceiptTotal = "Error while reading receipt";
+                else
+                    ReceiptTotal = result.Description;
             }
             finally
             {
