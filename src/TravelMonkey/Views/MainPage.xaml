@@ -3,7 +3,6 @@
     <ScrollView>
         <StackLayout>
             <!-- Hero image -->
-
             <yummy:PancakeView HorizontalOptions="Fill" VerticalOptions="Start" CornerRadius="0,0,0,40" HeightRequest="350">
                 <Grid>
                     <CarouselView PeekAreaInsets="-1" Margin="0,-1,0,0" x:Name="TheCarousel" ItemsSource="{Binding Destinations}" CurrentItem="{Binding CurrentDestination}">
@@ -36,10 +35,12 @@
                                 <Label TextColor="#fff" FontFamily="LatoBlack" FontSize="22" Text="Where do you want to go?" />
                             </StackLayout>
                         </StackLayout>
+
+                        <!-- Translate -->
                         <yummy:PancakeView Margin="20,0" HeightRequest="50" BackgroundColor="#99ffffff" CornerRadius="8" VerticalOptions="Start" HorizontalOptions="FillAndExpand">
                             <StackLayout Orientation="Horizontal" VerticalOptions="Center" Margin="20,0">
                                 <Label FontSize="20" VerticalOptions="Center" TextColor="Gray" FontFamily="FontAwesomeSolid" Text="" Margin="0,0,12,0" />
-                                <Entry x:Name="TranslateTextEntry" FontFamily="LatoRegular" TextColor="#fff" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Completed="Entry_Completed" Placeholder="Need to translate something?" PlaceholderColor="Gray" />
+                                <Entry x:Name="TranslateTextEntry" FontFamily="LatoRegular" TextColor="Black" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Completed="Entry_Completed" Placeholder="Need to translate something?" PlaceholderColor="Gray" />
                             </StackLayout>
                         </yummy:PancakeView>
                     </StackLayout>
@@ -53,29 +54,10 @@
                                 <Label Text="{Binding CurrentDestination.Title}" FontSize="24" FontFamily="LatoBold" />
                                 <Label Text="Recommendation" TextColor="#666" FontSize="16" FontFamily="LatoRegular" />
                             </StackLayout>
-                            <!--<StackLayout Grid.Column="1" Spacing="0" Margin="0,0,20,0" HorizontalOptions="EndAndExpand" VerticalOptions="Center">
-                            <Label FontSize="20" HorizontalTextAlignment="Center" HorizontalOptions="Center" FontFamily="FontAwesomeSolid">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="" TextColor="#ffac2c" />
-                                        <Span Text="" TextColor="#dddee0" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <Label Margin="0,8,0,0" HorizontalOptions="Center" HorizontalTextAlignment="Center" Text="Recommendation" TextColor="#666" FontSize="16" FontFamily="Lato-Regular">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="4.3 " FontSize="16" FontFamily="Lato-Bold" TextColor="#2a2a2a" />
-                                        <Span Text="(3478 views)" FontSize="12" FontFamily="Lato-Regular" TextColor="#2a2a2a" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                        </StackLayout>-->
                         </Grid>
                     </yummy:PancakeView>
                 </Grid>
             </yummy:PancakeView>
-
 
             <!-- Pictures -->
             <StackLayout Orientation="Horizontal">
@@ -105,7 +87,6 @@
                                         <yummy:PancakeView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundGradientStartColor="Transparent" BackgroundGradientEndColor="#222" />
                                         <StackLayout Spacing="0" Margin="12" VerticalOptions="EndAndExpand">
                                             <Label FontSize="16" FontFamily="LatoBold" TextColor="#fff" Text="{Binding Description}" />
-                                            <!--<Label FontSize="12" FontFamily="Lato-Regular" TextColor="#ccc" Text="{Binding RatingVotes}" />-->
                                         </StackLayout>
                                     </Grid>
                                 </yummy:PancakeView>

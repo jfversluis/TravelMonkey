@@ -8,7 +8,7 @@ namespace TravelMonkey.ViewModels
 {
     public class MainPageViewModel : BaseViewModel
     {
-        private Timer _slideShowTimer = new Timer(5000);
+        private readonly Timer _slideShowTimer = new Timer(5000);
 
         public List<Destination> Destinations => MockDataStore.Destinations;
         public ObservableCollection<PictureEntry> Pictures => MockDataStore.Pictures;
