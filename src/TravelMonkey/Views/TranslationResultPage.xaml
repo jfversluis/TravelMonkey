@@ -8,16 +8,16 @@
             <effect:SafeAreaPaddingEffect />
         </StackLayout.Effects>
 
-        <Button Text="Close" Clicked="Button_Clicked" HorizontalOptions="Center" FontFamily="Lato-Bold" />
+        <Button Text="Close" Clicked="Button_Clicked" HorizontalOptions="Center" FontFamily="LatoBold" />
 
-        <Entry Margin="15,0" Text="{Binding InputText, Mode=OneWay}" ReturnCommand="{Binding TranslateTextCommand}" ReturnCommandParameter="{Binding Text, Source={RelativeSource Mode=Self}}" FontSize="20" FontFamily="Lato-Regular" BackgroundColor="#F3F3F3" Placeholder="Enter text to translate" />
+        <Entry Margin="15,0" Text="{Binding InputText, Mode=OneWay}" ReturnCommand="{Binding TranslateTextCommand}" ReturnCommandParameter="{Binding Text, Source={RelativeSource Mode=Self}}" FontSize="20" FontFamily="LatoRegular" BackgroundColor="#F3F3F3" Placeholder="Enter text to translate" />
         
         <ScrollView>
             <StackLayout BindableLayout.ItemsSource="{Binding Translations}" Padding="10">
                 <BindableLayout.EmptyViewTemplate>
                     <DataTemplate>
                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
-                                <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontFamily="Lato-Regular" FontSize="12">No bueno translationo 🤷‍♀️</Label>
+                                <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontFamily="LatoRegular" FontSize="15">No bueno translationo 🤷‍♀️</Label>
                             </Grid>
                     </DataTemplate>
                 </BindableLayout.EmptyViewTemplate>
@@ -35,8 +35,8 @@
                                     <RowDefinition Height="*" />
                                 </Grid.RowDefinitions>
                                 <Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Source="{Binding Key, StringFormat='{0}.png'}" WidthRequest="40" HorizontalOptions="Start" />
-                                <Label Grid.Column="1" Grid.Row="0" Text="{Binding Key, Converter={StaticResource LanguageCodeToDescriptionConverter}, ConverterParameter={Binding Key}}" FontFamily="Lato-Bold" FontSize="Small" VerticalOptions="End" />
-                                <Label Grid.Column="1" Grid.Row="1" Text="{Binding Value}" FontFamily="Lato-Regular" FontSize="20" />
+                                <Label Grid.Column="1" Grid.Row="0" Text="{Binding Key, Converter={StaticResource LanguageCodeToDescriptionConverter}, ConverterParameter={Binding Key}}" FontFamily="LatoBold" FontSize="Small" VerticalOptions="End" />
+                                <Label Grid.Column="1" Grid.Row="1" Text="{Binding Value}" FontFamily="LatoRegular" FontSize="20" />
                             </Grid>
                         </yummy:PancakeView>
                     </DataTemplate>

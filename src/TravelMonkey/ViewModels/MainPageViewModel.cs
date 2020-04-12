@@ -12,7 +12,6 @@ namespace TravelMonkey.ViewModels
 
         public List<Destination> Destinations => MockDataStore.Destinations;
         public ObservableCollection<PictureEntry> Pictures => MockDataStore.Pictures;
-        public ObservableCollection<ReceiptEntry> Receipts => MockDataStore.Receipts;
 
         private Destination _currentDestination;
         public Destination CurrentDestination

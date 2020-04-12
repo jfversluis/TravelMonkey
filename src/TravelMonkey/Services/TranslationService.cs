@@ -14,7 +14,7 @@ namespace TravelMonkey.Services
     {
         public async Task<TranslateTextResult> TranslateText(string inputText)
         {
-            object[] body = new object[] { new { Text = inputText } };
+            var body = new object[] { new { Text = inputText } };
             var requestBody = JsonConvert.SerializeObject(body);
 
             using (var client = new HttpClient())
