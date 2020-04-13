@@ -6,11 +6,14 @@
         </yummy:PancakeView.Effects>
         <Grid Margin="7">
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <yummy:PancakeView Grid.Row="0" Padding="0" BorderColor="#44FFFFFF" CornerRadius="10" BorderThickness="2">
+            <Button Grid.Row="0" Text="Close" Clicked="Button_Clicked" HorizontalOptions="Center" FontFamily="LatoBold" TextColor="White" />
+
+            <yummy:PancakeView Grid.Row="1" Padding="0" BorderColor="#44FFFFFF" CornerRadius="10" BorderThickness="2">
                 <Grid>
                     <Image HorizontalOptions="Fill" VerticalOptions="Fill" IsVisible="{Binding ShowPhoto}" Source="{Binding PhotoSource}" Aspect="AspectFill">
                         <Image.GestureRecognizers>
@@ -24,14 +27,14 @@
                     </Label>
                 </Grid>
             </yummy:PancakeView>
-            
-            <yummy:PancakeView Grid.Row="1" BackgroundColor="#44FFFFFF" CornerRadius="5" Padding="2">
+
+            <yummy:PancakeView Grid.Row="2" BackgroundColor="#44FFFFFF" CornerRadius="5" Padding="2">
                 <Label Text="{Binding PictureDescription}" HorizontalTextAlignment="Center" />
             </yummy:PancakeView>
 
-            <Button Grid.Row="2" Text="Add Picture" FontAttributes="Bold" BackgroundColor="{Binding PictureAccentColor}" TextColor="White" Command="{Binding AddPictureCommand}" />
+            <Button Grid.Row="3" Text="Add Picture" FontAttributes="Bold" BackgroundColor="{Binding PictureAccentColor}" TextColor="White" Command="{Binding AddPictureCommand}" />
 
-            <Grid Grid.RowSpan="3" IsVisible="{Binding IsPosting}" BackgroundColor="#B0000000" Margin="-7">
+            <Grid Grid.RowSpan="4" IsVisible="{Binding IsPosting}" BackgroundColor="#B0000000" Margin="-7">
                 <ActivityIndicator IsRunning="true" HorizontalOptions="Center" VerticalOptions="Center" Color="White" />
             </Grid>
         </Grid>

@@ -3,6 +3,8 @@ using System.Collections.ObjectModel;
 using System.Timers;
 using TravelMonkey.Data;
 using TravelMonkey.Models;
+using Xamarin.Essentials;
+using Xamarin.Forms;
 
 namespace TravelMonkey.ViewModels
 {
@@ -19,6 +21,17 @@ namespace TravelMonkey.ViewModels
             get => _currentDestination;
             set => Set(ref _currentDestination, value);
         }
+
+        public Command<string> OpenUrlCommand { get; } = new Command<string>(async (url) =>
+        {
+            if (!string.IsNullOrWhiteSpace(url))
+                await Browser.OpenAsync(url, options: new BrowserLaunchOptions
+                {
+                    Flags = BrowserLaunchFlags.PresentAsFormSheet,
+                    PreferredToolbarColor = Color.SteelBlue,
+                    PreferredControlColor = Color.White
+                });
+        });
 
         public MainPageViewModel()
         {

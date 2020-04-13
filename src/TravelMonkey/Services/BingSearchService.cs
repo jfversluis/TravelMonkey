@@ -22,7 +22,8 @@ namespace TravelMonkey.Services
                 resultDestinations.Add(new Destination
                 {
                     Title = destination,
-                    ImageUrl = result.Value[0].ContentUrl
+                    ImageUrl = result.Value[0].ContentUrl,
+                    MoreInfoUrl = result.Value[0].HostPageUrl
                 });
             }
 

@@ -44,6 +44,9 @@ namespace TravelMonkey.ViewModels
         {
             var result = await _translationService.TranslateText(_inputText);
 
+            if (!result.Succeeded)
+                MessagingCenter.Send(this, Constants.TranslationFailedMessage);
+
             Translations = result.Translations;
         }
     }

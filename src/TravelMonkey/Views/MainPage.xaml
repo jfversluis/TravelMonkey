@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:d="http://xamarin.com/schemas/2014/forms/design" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:effect="clr-namespace:TravelMonkey.Effects" mc:Ignorable="d" x:Class="TravelMonkey.Views.MainPage">
     <ScrollView>
-        <StackLayout>
+        <StackLayout BackgroundColor="White">
             <!-- Hero image -->
             <yummy:PancakeView HorizontalOptions="Fill" VerticalOptions="Start" CornerRadius="0,0,0,40" HeightRequest="350">
                 <Grid>
@@ -34,6 +34,11 @@
                                 <Label TextColor="#fff" FontFamily="LatoBlack" FontSize="22" Text="Hi there," />
                                 <Label TextColor="#fff" FontFamily="LatoBlack" FontSize="22" Text="Where do you want to go?" />
                             </StackLayout>
+                            <Label Text="" FontSize="24" Margin="0,0,20,0" HorizontalOptions="EndAndExpand" VerticalOptions="Center" FontFamily="FontAwesomeSolid" TextColor="#fff">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenUrlCommand}" CommandParameter="{Binding CurrentDestination.MoreInfoUrl}" />
+                                </Label.GestureRecognizers>
+                            </Label>
                         </StackLayout>
 
                         <!-- Translate -->
@@ -51,7 +56,7 @@
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
                             <StackLayout Grid.Column="0" Margin="20,0,0,0" Spacing="0" VerticalOptions="Center">
-                                <Label Text="{Binding CurrentDestination.Title}" FontSize="24" FontFamily="LatoBold" />
+                                <Label Text="{Binding CurrentDestination.Title}" FontSize="24" FontFamily="LatoBold" TextColor="Black" />
                                 <Label Text="Recommendation" TextColor="#666" FontSize="16" FontFamily="LatoRegular" />
                             </StackLayout>
                         </Grid>
@@ -61,7 +66,7 @@
 
             <!-- Pictures -->
             <StackLayout Orientation="Horizontal">
-                <Label HorizontalOptions="Start" VerticalOptions="Center" Text="Pictures" FontFamily="LatoBold" FontSize="20" Margin="20,20,20,0" />
+                <Label HorizontalOptions="Start" VerticalOptions="Center" Text="Pictures" FontFamily="LatoBold" FontSize="20" Margin="20,20,20,0" TextColor="Black" />
                 <Label HorizontalOptions="EndAndExpand" VerticalOptions="Center" TextColor="#2687ee" Text="ADD NEW" FontSize="12" FontFamily="LatoBold" Margin="20,20,20,0">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Tapped="AddNewPicture_Tapped" />
@@ -74,7 +79,7 @@
                     <BindableLayout.EmptyViewTemplate>
                         <DataTemplate>
                             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
-                                <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontFamily="LatoRegular" FontSize="15">No pictures yet, give me your best shots! 📸</Label>
+                                <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontFamily="LatoRegular" FontSize="15" TextColor="Black">No pictures yet, give me your best shots! 📸</Label>
                             </Grid>
                         </DataTemplate>
                     </BindableLayout.EmptyViewTemplate>

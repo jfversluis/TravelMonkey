@@ -36,10 +36,6 @@ namespace TravelMonkey.Views
             await Navigation.PushModalAsync(new AddPicturePage());
         }
 
-        private void AddNewReceipt_Tapped(object sender, EventArgs e)
-        {
-        }
-
         private async void Entry_Completed(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(TranslateTextEntry.Text))

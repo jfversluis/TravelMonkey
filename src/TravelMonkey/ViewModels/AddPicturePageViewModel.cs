@@ -87,7 +87,8 @@ namespace TravelMonkey.ViewModels
                 return;
             }
 
-            await Post();
+            if (_photo != null)
+                await Post();
         }
 
         private async Task Post()
@@ -104,6 +105,12 @@ namespace TravelMonkey.ViewModels
             {
                 var pictureStream = _photo.GetStreamWithImageRotatedForExternalStorage();
                 var result = await _computerVisionService.AddPicture(pictureStream);
+
+                if (!result.Succeeded)
+                {
+                    MessagingCenter.Send(this, Constants.PictureFailedMessage);
+                    return;
+                }
 
                 PictureAccentColor = result.AccentColor;
 
