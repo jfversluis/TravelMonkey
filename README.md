@@ -83,10 +83,12 @@ Enter the following command in the `Cloud Shell`. Note that the `location` param
 az cognitiveservices account create \
 --kind Bing.Search.v7 \
 --location global \
---sku F0 \
+--sku F1 \
 --resource-group RESOURCE-GROUP-NAME-FROM-FIRST-STEP \
 --name YOUR-SERVICE-NAME-GOES-HERE
 ```
+
+*Although the sku lists `F1` here, don't worry! This is the free tier for Bing Search*
 
 All done! 🙌
 
