@@ -9,24 +9,86 @@ Extend this intelligent travel companion app and be prepared for your next trave
 Check out this article for all the details.
 
 ## The Challenge
-Your challenge is to extend the app in any way.
+Right now, the app uses [Microsoft Cognitive Services Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) to describe your pictures and recognize landmarks and [Translator Text](https://docs.microsoft.com/azure/cognitive-services/translator/) to help you while abroad. Lastly, with [Bing Search](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/) we're giving you some travel inspiration on the main screen. The app is entirely built with [Xamarin.Forms](https://dotnet.microsoft.com/apps/xamarin/xamarin-forms).
 
-This might include, but is certainly not limited to:
+Your challenge is to extend the app in any way. This might include, but is certainly not limited to:
 
-* Get dynamic destination images through Bing
-* Also recognize celebrities in pictures
-* Make sure the images are safe to show your family
-* Improve design
-* Add a detail screen to be able to reopen the pictures or receipts
-* Detect faces in pictures
-* Detect emotion in said faces
+* Improve design or redesign with [`Shell`](https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/shell/) for example
+* Add a detail screen to be able to reopen the pictures or save previous translation results
+* Detect faces in pictures and/or detect emotion in said faces
 * See if the person speaking in a foreign tongue likes you by detecting the sentiment in the translation
+* Abstract the services into an [Azure Function](https://azure.microsoft.com/services/functions/)
 * The sky is the limit! Bring your best ideas
 
 ## Getting Started
 To be able to run the app you will need to do a little setup. No worries, you can all do this for free!
 
-TBDDDDDDDDDDDDDD
+### Creating a Resource Group
+
+1. If you don't already have one, [sign up for a free Azure subscription here](https://azure.microsoft.com/free/).
+2. Once done, open up the Azure portal: https://portal.azure.com - and sign in.
+3. Then open up the [`Azure Cloud Shell`](https://docs.microsoft.com/azure/cloud-shell/overview). You can do that by clicking on the button that looks like the command prompt.
+
+![The Azure Cloud Shell button on the Azure portal toolbar](assets/getting-started/azure-shell-button.png)
+
+4. Once the `Cloud Shell` opens, you'll want to do two things. Create a `Resource Group` and then the `Computer Vision` service. So go ahead and think of names for both right now ... you'll need them for the next step(s). We will be reusing the `Resource Group` for the other services as well.
+5. Enter the following command in the `Cloud Shell`. For faster response times you might want to choose a different region than `westus2`, but if you're unsure; this region will work just as well. You can find all locations with the command `az account list-locations -o table`.
+
+```
+az group create -l westus2 -g YOUR-RESOURCE-GROUP-NAME-GOES-HERE
+```
+
+### Creating the Computer Vision Service
+
+Once the `Resource Group` is created, then you can create the `Computer Vision` service. Enter the following command in the `Cloud Shell`.
+
+```
+az cognitiveservices account create \
+--kind ComputerVision \
+--location westus2 \
+--sku F0 \
+--resource-group RESOURCE-GROUP-NAME-FROM-FIRST-STEP \
+--name YOUR-SERVICE-NAME-GOES-HERE
+```
+
+That's it! What's neat is that the `--sku F0` indicates the free tier of `Computer Vision`. Or any other cognitive service for that matter!
+
+Then you'll be able to browse the `Computer Vision` service you just created. Make note of the Endpoint url and the Key name. You can see an example on where to find them below. Note: the endpoint URL differs based on the chosen Azure region. Make sure you enter the right one in the app
+
+![The newly created Computer Vision service overview in the Azure Portal screenshot](assets/getting-started/azure-portal-computervision.png)
+
+
+### Creating the Translator Text Service
+
+Now rinse and repeat for the `Translator Text` service.
+
+Enter the following command in the `Cloud Shell`. Note that the `location` paramter for this needs to be `global`.
+
+```
+az cognitiveservices account create \
+--kind TextTranslation \
+--location global \
+--sku F0 \
+--resource-group RESOURCE-GROUP-NAME-FROM-FIRST-STEP \
+--name YOUR-SERVICE-NAME-GOES-HERE
+```
+
+### Creating the Bing Search Service
+
+And lastly let's create the `Bing Search` service.
+
+Enter the following command in the `Cloud Shell`. Note that the `location` paramter for this needs to be `global`. Also, you will need to accept the service terms, make sure you read and understand them.
+
+```
+az cognitiveservices account create \
+--kind Bing.Search.v7 \
+--location global \
+--sku F0 \
+--resource-group RESOURCE-GROUP-NAME-FROM-FIRST-STEP \
+--name YOUR-SERVICE-NAME-GOES-HERE
+```
+
+All done! 🙌
 
 ## Ready for Takeoff
 This is your captain speaking: we are now cleared to make some amazing changes in our app. We can't wait to see what you come up with.
@@ -36,16 +98,23 @@ Thank you for traveling with TravelMonkey!
 ## Credits, Recognitions & Others
 My good friend [Steven Thewissen](https://thewissen.io/) has been so kind to create the TravelMonkey logo as well as lending me his [awesome UI design](https://github.com/sthewissen/KickassUI.Traveler) for this app.
 
-Images used in the app are from...
+Other resources used in the app are from:
 
-- Country flags from [flaticon.com](https://www.flaticon.com/packs/countrys-flags)
+ * Country flag images from [flaticon.com](https://www.flaticon.com/packs/countrys-flags)
+ * Images by Bing Image search with the license on public domain
+ * Icons used in the UI by [FontAwesome](https://fontawesome.com/) 
+ * UI main font is [Lato](https://fonts.google.com/specimen/Lato) by Google
 
+### The Making Of...
 I have been doing some streams to create this app, which can be found [here](https://www.youtube.com/watch?v=Y-rd_GP5dag&list=PLfbOp004UaYXwpVzT1HQxHqwzGg2cLWFZ).
 
-### Third-party Libraries
+### Third-Party Libraries
 During the creation of this app I have used a number of third-party libraries to make my life easier. Find a list with links here. They deserve your support in whatever way you can!
 
+ * [Xamarin.Forms](https://github.com/xamarin/Xamarin.Forms) by Microsoft
  * [userdialogs](https://github.com/aritchie/userdialogs) by [Allan Ritchie](https://allancritchie.net/)
  * [PancakeView](https://github.com/sthewissen/Xamarin.Forms.PancakeView) by [Steven Thewissen](https://thewissen.io)
  * [Xamarin.Essentials](https://github.com/xamarin/Essentials) by Microsoft
  * [MediaPlugin](https://github.com/jamesmontemagno/MediaPlugin) by [James Montemagno](https://montemagno.com)
+ * [Microsoft.Azure.CognitiveServices.Search.ImageSearch](https://github.com/Azure/azure-sdk-for-net) by Microsoft
+ * [Microsoft.Azure.CognitiveServices.Vision.ComputerVision](https://github.com/Azure/azure-sdk-for-net) by Microsoft
