@@ -11,7 +11,7 @@
 
             <Button Text="Close" Clicked="Button_Clicked" HorizontalOptions="Center" FontFamily="LatoBold" TextColor="White" />
 
-            <Entry Margin="15,0" Text="{Binding InputText, Mode=OneWay}" ReturnCommand="{Binding TranslateTextCommand}" ReturnCommandParameter="{Binding Text, Source={RelativeSource Mode=Self}}" FontSize="20" FontFamily="LatoRegular" BackgroundColor="#F3F3F3" Placeholder="Enter text to translate" />
+            <Entry Margin="15,0" Text="{Binding InputText, Mode=OneWay}" ReturnCommand="{Binding TranslateTextCommand}" ReturnCommandParameter="{Binding Text, Source={RelativeSource Mode=Self}}" FontSize="20" FontFamily="LatoRegular" BackgroundColor="Transparent" Placeholder="Enter text to translate" />
 
             <ScrollView>
                 <StackLayout BindableLayout.ItemsSource="{Binding Translations}" Padding="10">

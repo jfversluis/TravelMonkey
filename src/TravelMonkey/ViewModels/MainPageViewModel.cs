@@ -35,17 +35,20 @@ namespace TravelMonkey.ViewModels
 
         public MainPageViewModel()
         {
-            CurrentDestination = Destinations[0];
-
-            _slideShowTimer.Elapsed += (o, a) =>
+            if (Destinations.Count > 0)
             {
-                var currentIdx = Destinations.IndexOf(CurrentDestination);
+                CurrentDestination = Destinations[0];
 
-                if (currentIdx == Destinations.Count - 1)
-                    CurrentDestination = Destinations[0];
-                else
-                    CurrentDestination = Destinations[currentIdx + 1];
-            };
+                _slideShowTimer.Elapsed += (o, a) =>
+                {
+                    var currentIdx = Destinations.IndexOf(CurrentDestination);
+
+                    if (currentIdx == Destinations.Count - 1)
+                        CurrentDestination = Destinations[0];
+                    else
+                        CurrentDestination = Destinations[currentIdx + 1];
+                };
+            }
         }
 
         public void StartSlideShow()

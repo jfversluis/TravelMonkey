@@ -106,6 +106,7 @@ Other resources used in the app are from:
  * Images by Bing Image search with the license on public domain
  * Icons used in the UI by [FontAwesome](https://fontawesome.com/) 
  * UI main font is [Lato](https://fonts.google.com/specimen/Lato) by Google
+ * [Cat-as-a-Service](https://cataas.com/) for when Bing Search fails us
 
 ### The Making Of...
 I have been doing some streams to create this app, which can be found [here](https://www.youtube.com/watch?v=Y-rd_GP5dag&list=PLfbOp004UaYXwpVzT1HQxHqwzGg2cLWFZ).

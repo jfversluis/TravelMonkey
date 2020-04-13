@@ -11,23 +11,37 @@ namespace TravelMonkey.Services
         {
             var searchDestinations = new[] { "Seattle", "Maui", "Amsterdam", "Antarctica" };
 
-            var client = new ImageSearchClient(new ApiKeyServiceClientCredentials(ApiKeys.BingImageSearch));
-
-            var resultDestinations = new List<Destination>();
-
-            foreach (var destination in searchDestinations)
+            try
             {
-                var result = await client.Images.SearchAsync(destination, color: "blue", minWidth: 500, minHeight: 500, imageType: "Photo", license: "Public", count: 1, maxHeight: 1200, maxWidth: 1200);
+                var client = new ImageSearchClient(new ApiKeyServiceClientCredentials(ApiKeys.BingImageSearch));
 
-                resultDestinations.Add(new Destination
+                var resultDestinations = new List<Destination>();
+
+                foreach (var destination in searchDestinations)
                 {
-                    Title = destination,
-                    ImageUrl = result.Value[0].ContentUrl,
-                    MoreInfoUrl = result.Value[0].HostPageUrl
-                });
-            }
+                    var result = await client.Images.SearchAsync(destination, color: "blue", minWidth: 500, minHeight: 500, imageType: "Photo", license: "Public", count: 1, maxHeight: 1200, maxWidth: 1200);
 
-            return resultDestinations;
+                    resultDestinations.Add(new Destination
+                    {
+                        Title = destination,
+                        ImageUrl = result.Value[0].ContentUrl,
+                        MoreInfoUrl = result.Value[0].HostPageUrl
+                    });
+                }
+
+                return resultDestinations;
+            }
+            catch
+            {
+                return new List<Destination> {
+                    new Destination
+                    {
+                        Title = "Something went wrong :( Here is a cat instead!",
+                        ImageUrl = "https://cataas.com/cat",
+                        MoreInfoUrl = "https://cataas.com/"
+                    }
+                };
+            }
         }
     }
 }
