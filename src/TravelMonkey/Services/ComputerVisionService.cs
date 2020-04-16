@@ -32,8 +32,7 @@ namespace TravelMonkey.Services
 
                 var landmarkDescription = "";
 
-                landmarkDescription = landmark != null ? $"I think I see the {landmark.Detail.Landmarks.OrderByDescending(l => l.Confidence).First().Name}"
-                        : "";
+                landmarkDescription = landmark != null ? landmark.Detail.Landmarks.OrderByDescending(l => l.Confidence).First().Name : "";
 
                 // Wrap in our result object and send along
                 return new AddPictureResult(description, accentColor, landmarkDescription);
