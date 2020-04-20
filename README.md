@@ -6,7 +6,7 @@ Fasten your seatbelts! You may not be able to travel now... but this summer when
 
 Extend this intelligent travel companion app and be prepared for your next travel. Oh, and did we mention you will get some cool swag to take in your suitcase?
 
-Check out [this article](https://devblogs.microsoft.com/xamarin/xamarin-cognitive-services-crazy-combo-challenge?WT.mc_id=aiapril-xamblog-masoucou) for all the details.
+Check out [this article](https://devblogs.microsoft.com/xamarin/cognitive-services-xamarin-challenge/?WT.mc_id=aiapril-xamblog-masoucou) for all the details.
 
 ## The Challenge
 
