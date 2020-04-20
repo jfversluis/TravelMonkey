@@ -6,7 +6,7 @@ Fasten your seatbelts! You may not be able to travel now... but this summer when
 
 Extend this intelligent travel companion app and be prepared for your next travel. Oh, and did we mention you will get some cool swag to take in your suitcase?
 
-Check out this article for all the details.
+Check out [this article](https://devblogs.microsoft.com/xamarin/xamarin-cognitive-services-crazy-combo-challenge?WT.mc_id=aiapril-xamblog-masoucou) for all the details.
 
 ## The Challenge
 
@@ -25,7 +25,7 @@ Your challenge is to extend the app in any way. This might include, but is certa
 
 ## Getting Started
 
-To be able to run the app you will need to do a little setup. No worries, you can all do this for free! That's right, for free!
+To be able to run the app you will need to do a little setup. No worries, you can all do this for free! That's right, for free! You can also watch the Getting Started video [here](https://youtu.be/_a1Qptxyibo).
 
 ### Creating a Resource Group
 
